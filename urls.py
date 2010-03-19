@@ -24,6 +24,8 @@ urlpatterns = patterns('',
     url(r'^account/signup/$', signup_view, name="acct_signup"),
     
     (r'^about/', include('about.urls')),
+    (r'^gear/', include('gear.urls')),
+    (r'^manufacturer/', include('manufacturer.urls')),
     (r'^account/', include('account.urls')),
     (r'^openid/(.*)', PinaxConsumer()),
     (r'^profiles/', include('basic_profiles.urls')),

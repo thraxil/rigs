@@ -1,0 +1,19 @@
+{% extends "profiles/base.html" %}
+{% load markup %}
+
+{% block head_title %}Manufacturers{% endblock %}
+
+{% block body %}
+
+    <h1>Manufacturer: {{object.name}}</h1>
+
+    {{object.description|markdown}}
+    {% if user.is_authenticated %}
+
+
+    {% else %}
+
+    {% endif %}
+
+
+{% endblock %}

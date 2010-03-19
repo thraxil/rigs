@@ -125,7 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'pinax.templatetags',
-    
+    'django.contrib.markup',
     # external
     'notification', # must be first
     'django_openid',
@@ -143,6 +143,8 @@ INSTALLED_APPS = (
     'account',
     'signup_codes',
     'about',
+    'gear',
+    'manufacturer',
     'django.contrib.admin',
 
 )

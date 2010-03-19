@@ -1,0 +1,15 @@
+{% extends "site_base.html" %}
+
+{% load ifsetting_tag %}
+
+{% block head_title %}Gear{% endblock %}
+
+{% block body %}
+    <h1>Gear</h1>
+    
+    {% if user.is_authenticated %}
+    <p>You are logged in</p>
+    {% else %}
+    <p>You are not logged in</p>
+    {% endif %}
+{% endblock %}
