@@ -5,9 +5,19 @@
 
 {% block body %}
 
-    <h1>Manufacturer: {{object.name}}</h1>
+    <h1><a href="/manufacturer/">Manufacturer</a>: {{object.name}}</h1>
 
     {{object.description|markdown}}
+
+    {% if object.gear_set %}
+    <ul>
+      {% for gear in object.gear_set.all %}
+      <li><a href="{{gear.get_absolute_url}}">{{gear.name}}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+
     {% if user.is_authenticated %}
 
 

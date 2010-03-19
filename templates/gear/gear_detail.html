@@ -1,0 +1,20 @@
+{% extends "profiles/base.html" %}
+{% load markup %}
+
+{% block head_title %}Gear{% endblock %}
+
+{% block body %}
+
+    <h1><a href="/gear/">Gear</a>: {{object.name}}</h1>
+    <p><a href="{{object.manufacturer.get_absolute_url}}">{{object.manufacturer.name}}</a></p>
+
+    {{object.description|markdown}}
+    {% if user.is_authenticated %}
+
+
+    {% else %}
+
+    {% endif %}
+
+
+{% endblock %}

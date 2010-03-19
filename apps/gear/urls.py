@@ -1,6 +1,15 @@
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
+
+from gear.models import Gear
+
+info_dict = {
+    'queryset': Gear.objects.all(),
+}
 
 urlpatterns = patterns('',
-    url(r'^$', direct_to_template, {"template": "gear/index.html"}, name="gear"),
+                       (r'^$', 'django.views.generic.list_detail.object_list', info_dict),
+                       (r'^create/?$', 'django.views.generic.create_update.create_object',
+                        dict(model=Gear, post_save_redirect="/gear/") ),
+                       (r'^(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
 )
+
