@@ -28,6 +28,12 @@
 This is a lifesaver when debugging!
 <p> {{ form.error_dict }} </p>
 -->
+{% if object %}
+<hr />
+<form action="../delete/" method="post">
+<input type="submit" value="delete" />
+</form>
+{% endif %}
 
     {% else %}
     <p>not authenticated</p>

@@ -24,6 +24,14 @@
 </table>
 <input type="submit" />
 </form>
+
+{% if object %}
+<hr />
+<form action="../delete/" method="post">
+<input type="submit" value="delete" />
+</form>
+{% endif %}
+
 <!--
 This is a lifesaver when debugging!
 <p> {{ form.error_dict }} </p>

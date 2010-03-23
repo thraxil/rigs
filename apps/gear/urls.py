@@ -17,6 +17,9 @@ urlpatterns = patterns('',
                            name='gear_tag_detail'),
                        (r'^(?P<object_id>\d+)/update/?$', 'django.views.generic.create_update.update_object',
                         dict(model=Gear, post_save_redirect="/gear/") ),
+
+                       (r'^(?P<object_id>\d+)/delete/?$', 'django.views.generic.create_update.delete_object',
+                        dict(model=Gear, post_delete_redirect="/gear/") ),
                        (r'^(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
 
 )
