@@ -146,7 +146,7 @@ INSTALLED_APPS = (
     'gear',
     'manufacturer',
     'django.contrib.admin',
-
+    'tagging',
 )
 
 ABSOLUTE_URL_OVERRIDES = {
