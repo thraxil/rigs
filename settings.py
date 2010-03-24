@@ -146,8 +146,10 @@ INSTALLED_APPS = (
     'gear',
     'manufacturer',
     'link',
+    'photo',
     'django.contrib.admin',
     'tagging',
+    'sorl.thumbnail',
 )
 
 ABSOLUTE_URL_OVERRIDES = {

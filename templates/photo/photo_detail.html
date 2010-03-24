@@ -1,0 +1,30 @@
+{% extends "profiles/base.html" %}
+{% load thumbnail %}
+{% load markup %}
+
+{% block head_title %}Photo{% endblock %}
+
+{% block body %}
+<h2>Photo of: <a href="{{object.gear.get_absolute_url}}">{{object.gear.name}}</a></h2>
+
+<img src="{% thumbnail object.image 1024x1024 %}" />
+
+    {{object.caption|markdown}}
+
+{% if object.source_url %}
+<p>source: <a href="{{object.source_url}}">{{object.source_name|default:object.source_url}}</a></p>
+{% else %}
+{% if object.source_name %}
+<p>source: {{object.source_name}}</p>
+{% endif %}
+{% endif %}
+
+    {% if user.is_authenticated %}
+
+
+    {% else %}
+
+    {% endif %}
+
+
+{% endblock %}
