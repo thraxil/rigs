@@ -25,7 +25,18 @@
 <input type="submit" />
 </form>
 
+
+
+
+
 {% if object %}
+
+{% for link in object.links.all %}
+{{link.title}}
+{% endfor %}
+
+
+
 <hr />
 <form action="../delete/" method="post">
 <input type="submit" value="delete" />

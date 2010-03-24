@@ -9,7 +9,16 @@
 
     {{object.description|markdown}}
 
+    {% if object.links %}
+    <ul>links
+      {% for link in object.links.all %}
+      <li><a href="{{link.url}}">{{link.title}}</a> {{link.description}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     {% if object.gear_set %}
+    <h2>Gear</h2>
     <ul>
       {% for gear in object.gear_set.all %}
       <li><a href="{{gear.get_absolute_url}}">{{gear.name}}</a></li>

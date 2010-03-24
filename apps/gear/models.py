@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib import admin
 from manufacturer.models import Manufacturer
+from link.models import Link, LinkInline
+from django.contrib.contenttypes import generic
 import tagging
-import tagging.fields
+from tagging import fields
 
 class Gear(models.Model):
     name = models.CharField(default="",max_length=256)
@@ -10,13 +12,15 @@ class Gear(models.Model):
     manufacturer = models.ForeignKey(Manufacturer)
     description = models.TextField(default="",blank=True)
     tags = tagging.fields.TagField()
+    links = generic.GenericRelation(Link)
 
     def get_absolute_url(self):
         return "/gear/%d/" % self.id
 
     def __unicode__(self):
         return self.name
-#tagging.register(Gear)
 
 class GearAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
+    inlines = [LinkInline,]
+admin.site.register(Gear, GearAdmin)

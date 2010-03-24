@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'about',
     'gear',
     'manufacturer',
+    'link',
     'django.contrib.admin',
     'tagging',
 )
