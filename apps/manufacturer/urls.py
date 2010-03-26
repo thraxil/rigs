@@ -14,5 +14,6 @@ urlpatterns = patterns('',
                         dict(form_class=ManufacturerForm, post_save_redirect="/manufacturer/") ),
                        (r'^(?P<object_id>\d+)/delete/?$', 'django.views.generic.create_update.delete_object',
                         dict(model=Manufacturer, post_delete_redirect="/manufacturer/") ),
+                       (r'^(?P<object_id>\d+)/edit_links/?$', 'manufacturer.views.edit_links'),
                        (r'^(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
 )

@@ -16,6 +16,9 @@ class Manufacturer(models.Model):
     def __unicode__(self):
         return self.name
 
+    def links_formset(self):
+        LinkFormset = generic.generic_inlineformset_factory(Link, extra=1)
+        return LinkFormset(instance=self)
 
 class ManufacturerForm(ModelForm):
     class Meta:

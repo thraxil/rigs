@@ -25,17 +25,15 @@
 <input type="submit" />
 </form>
 
-
-
-
-
 {% if object %}
+<h2>links</h2>
+<form action="../edit_links/" method="post">
+<table>
+{{ object.links_formset }}
+</table>
 
-{% for link in object.links.all %}
-{{link.title}}
-{% endfor %}
-
-
+<input type="submit" value="edit links" />
+</form>
 
 <hr />
 <form action="../delete/" method="post">
