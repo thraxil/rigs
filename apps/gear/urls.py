@@ -21,6 +21,7 @@ urlpatterns = patterns('',
                        (r'^(?P<object_id>\d+)/delete/?$', 'django.views.generic.create_update.delete_object',
                         dict(model=Gear, post_delete_redirect="/gear/") ),
                        (r'^(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
+                       (r'^(?P<object_id>\d+)/edit_links/?$', 'gear.views.edit_links'),
 
 )
 

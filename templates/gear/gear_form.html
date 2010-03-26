@@ -29,6 +29,16 @@ This is a lifesaver when debugging!
 <p> {{ form.error_dict }} </p>
 -->
 {% if object %}
+<h2>links</h2>
+<form action="../edit_links/" method="post">
+<table>
+{{ object.links_formset }}
+</table>
+
+<input type="submit" value="edit links" />
+</form>
+
+
 <hr />
 <form action="../delete/" method="post">
 <input type="submit" value="delete" />

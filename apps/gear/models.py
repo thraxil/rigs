@@ -22,6 +22,11 @@ class Gear(models.Model):
     def __unicode__(self):
         return self.name
 
+    def links_formset(self):
+        LinkFormset = generic.generic_inlineformset_factory(Link, extra=1)
+        return LinkFormset(instance=self)
+
+
 class GearAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     inlines = [LinkInline,PhotoInline]
