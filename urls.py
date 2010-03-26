@@ -39,4 +39,5 @@ urlpatterns = patterns('',
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('',
         (r'^site_media/', include('staticfiles.urls')),
+                            (r'^uploads/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/var/www/rigs/uploads/'}),
     )
