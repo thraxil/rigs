@@ -6,10 +6,11 @@ from photo.models import Photo, PhotoInline
 from django.contrib.contenttypes import generic
 import tagging
 from tagging import fields
+from django.template.defaultfilters import slugify
 
 class Gear(models.Model):
     name = models.CharField(default="",max_length=256)
-    slug = models.SlugField(max_length=256)
+    slug = models.SlugField(max_length=256,editable=False)
     manufacturer = models.ForeignKey(Manufacturer)
     description = models.TextField(default="",blank=True)
     tags = tagging.fields.TagField()
@@ -32,6 +33,10 @@ class Gear(models.Model):
     def photos_formset(self):
         PhotoFormset = generic.generic_inlineformset_factory(Photo, extra=1)
         return PhotoFormset(instance=self)
+
+    def save(self):
+        self.slug = slugify(self.name)[:256]
+        super(Gear, self).save()
 
 
 class GearAdmin(admin.ModelAdmin):

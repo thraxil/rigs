@@ -3,10 +3,11 @@ from django.contrib import admin
 from link.models import Link, LinkInline
 from django.forms import ModelForm
 from django.contrib.contenttypes import generic
+from django.template.defaultfilters import slugify
 
 class Manufacturer(models.Model):
     name = models.CharField(default="",unique=True, max_length=256)
-    slug = models.SlugField(max_length=256)
+    slug = models.SlugField(max_length=256,editable=False)
     description = models.TextField(default="",blank=True)
     links = generic.GenericRelation(Link)
 
@@ -23,9 +24,14 @@ class Manufacturer(models.Model):
         LinkFormset = generic.generic_inlineformset_factory(Link, extra=1)
         return LinkFormset(instance=self)
 
+    def save(self):
+        self.slug = slugify(self.name)[:256]
+        super(Manufacturer, self).save()
+
 class ManufacturerForm(ModelForm):
     class Meta:
         model = Manufacturer
+#        exclude = ('slug',)
 
 class ManufacturerAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
