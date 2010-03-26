@@ -38,6 +38,15 @@ This is a lifesaver when debugging!
 <input type="submit" value="edit links" />
 </form>
 
+<h2>photos</h2>
+<form action="../edit_photos/" method="post" enctype="multipart/form-data">
+<table>
+{{ object.photos_formset }}
+</table>
+
+<input type="submit" value="edit photos" />
+</form>
+
 
 <hr />
 <form action="../delete/" method="post">
