@@ -10,6 +10,9 @@ class Manufacturer(models.Model):
     description = models.TextField(default="",blank=True)
     links = generic.GenericRelation(Link)
 
+    class Meta:
+        ordering = ["name",]
+
     def get_absolute_url(self):
         return "/manufacturer/%s/" % self.slug
 

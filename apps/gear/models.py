@@ -16,6 +16,9 @@ class Gear(models.Model):
     links = generic.GenericRelation(Link)
     photos = generic.GenericRelation(Photo)
 
+    class Meta:
+        ordering = ["name",]
+
     def get_absolute_url(self):
         return "/gear/%s/" % self.slug
 
