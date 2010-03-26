@@ -15,14 +15,15 @@ urlpatterns = patterns('',
                        url(r'^tag/(?P<tag>[^/]+)/$',tagged_object_list,dict(queryset_or_model=Gear, paginate_by=100, allow_empty=True,
                                                                             template_name="gear/gear_tag_list.html"),
                            name='gear_tag_detail'),
-                       (r'^(?P<object_id>\d+)/update/?$', 'django.views.generic.create_update.update_object',
+                       (r'^(?P<slug>[^/]+)/update/?$', 'django.views.generic.create_update.update_object',
                         dict(model=Gear, post_save_redirect="/gear/") ),
 
-                       (r'^(?P<object_id>\d+)/delete/?$', 'django.views.generic.create_update.delete_object',
+                       (r'^(?P<slug>[^/]+)/delete/?$', 'django.views.generic.create_update.delete_object',
                         dict(model=Gear, post_delete_redirect="/gear/") ),
-                       (r'^(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
-                       (r'^(?P<object_id>\d+)/edit_links/?$', 'gear.views.edit_links'),
-                       (r'^(?P<object_id>\d+)/edit_photos/?$', 'gear.views.edit_photos'),
+                       (r'^(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', 
+                        dict(slug_field='slug',queryset=Gear.objects.all())),
+                       (r'^(?P<slug>[^/]+)/edit_links/?$', 'gear.views.edit_links'),
+                       (r'^(?P<slug>[^/]+)/edit_photos/?$', 'gear.views.edit_photos'),
 
 )
 

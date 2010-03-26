@@ -17,7 +17,7 @@ class Gear(models.Model):
     photos = generic.GenericRelation(Photo)
 
     def get_absolute_url(self):
-        return "/gear/%d/" % self.id
+        return "/gear/%s/" % self.slug
 
     def __unicode__(self):
         return self.name

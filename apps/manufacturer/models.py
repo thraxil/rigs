@@ -11,7 +11,7 @@ class Manufacturer(models.Model):
     links = generic.GenericRelation(Link)
 
     def get_absolute_url(self):
-        return "/manufacturer/%d/" % self.id
+        return "/manufacturer/%s/" % self.slug
 
     def __unicode__(self):
         return self.name
