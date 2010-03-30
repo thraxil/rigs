@@ -6,10 +6,11 @@
 {% block body %}
 
     <h1><a href="/manufacturer/">Manufacturer</a>: {{object.name}}</h1>
-
+    <p>Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
+    
     {{object.description|markdown}}
 
-    {% if object.links %}
+    {% if object.links.count %}
     <ul>links
       {% for link in object.links.all %}
       <li><a href="{{link.url}}">{{link.title}}</a> {{link.description}}</li>
@@ -17,7 +18,7 @@
     </ul>
     {% endif %}
 
-    {% if object.gear_set %}
+    {% if object.gear_set.count %}
     <h2>Gear</h2>
     <ul>
       {% for gear in object.gear_set.all %}

@@ -11,6 +11,10 @@ class Link(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
+    added = models.DateTimeField(auto_now_add=True,editable=False)
+    modified = models.DateTimeField(auto_now=True,editable=False)
+
+
 class LinkInline(generic.GenericTabularInline):
     model = Link
 

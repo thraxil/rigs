@@ -8,13 +8,14 @@
 
     <h1><a href="/gear/">Gear</a>: {{object.name}}</h1>
     <p>Manufacturer: <a href="{{object.manufacturer.get_absolute_url}}">{{object.manufacturer.name}}</a></p>
+    <p>Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
     <p>Tags: {% tags_for_object object as tags %}
       {% for tag in tags %}<a href="{% url gear_tag_detail tag %}">{{tag}}</a> {% endfor %}</p>
 
       
     {{object.description|markdown}}
 
-    {% if object.links %}
+    {% if object.links.count %}
     <ul>links
       {% for link in object.links.all %}
       <li><a href="{{link.url}}">{{link.title}}</a> {{link.description}}</li>
@@ -22,7 +23,7 @@
     </ul>
     {% endif %}
 
-    {% if object.photos %}
+    {% if object.photos.count %}
     <ul>photos
       {% for photo in object.photos.all %}
       <li><a href="{{photo.get_absolute_url}}"><img src="{% thumbnail photo.image 100x100 %}" /></a></li>

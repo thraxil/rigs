@@ -25,6 +25,10 @@ class Photo(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
+    added = models.DateTimeField(auto_now_add=True,editable=False)
+    modified = models.DateTimeField(auto_now=True,editable=False)
+
+
     def gear(self):
         return self.content_object
 
