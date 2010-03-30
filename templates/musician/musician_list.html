@@ -1,0 +1,25 @@
+{% extends "profiles/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Musicians{% endblock %}
+
+{% block body %}
+
+    <h1>Musicians {% if user.is_authenticated %}
+    (<a href="create/">+</a>)
+    {% endif %}</h1>
+
+    
+
+{% if object_list %}
+    <ul>
+    {% for musician in object_list %}
+        <li><a href="{{ musician.get_absolute_url }}">{{ musician.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No musicians are available.</p>
+{% endif %}
+
+{% endblock %}

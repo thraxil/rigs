@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'manufacturer',
     'link',
     'photo',
+    'musician',
     'django.contrib.admin',
     'tagging',
     'sorl.thumbnail',
