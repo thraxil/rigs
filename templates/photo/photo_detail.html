@@ -12,7 +12,7 @@
 
     {{object.caption|markdown}}
 
-<p>Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
+<p class="timestamp">Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
 {% if object.source_url %}
 <p>source: <a href="{{object.source_url}}">{{object.source_name|default:object.source_url}}</a></p>
 {% else %}
