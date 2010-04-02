@@ -40,6 +40,12 @@ class Gear(models.Model):
         self.slug = slugify(self.name)[:256]
         super(Gear, self).save()
 
+    def first_photo(self):
+        if self.photos.count() > 0:
+            return self.photos.all()[0]
+        else:
+            return None
+
 
 class GearAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
