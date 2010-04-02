@@ -29,13 +29,13 @@ class Photo(models.Model):
     modified = models.DateTimeField(auto_now=True,editable=False)
 
     def is_gear(self):
-        return self.content_type.model == "gear"
+        return self.content_object.model == "gear"
 
     def is_musiciangear(self):
-        return self.content_type.model == "musiciangear"
+        return self.content_object.model == "musiciangear"
 
     def is_musician(self):
-        return self.content_type.model == "musician"
+        return self.content_object.model == "musician"
 
     def gear(self):
         return self.content_object
