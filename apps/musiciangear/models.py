@@ -29,6 +29,13 @@ class MusicianGear(models.Model):
         PhotoFormset = generic.generic_inlineformset_factory(Photo, extra=1)
         return PhotoFormset(instance=self)
 
+    def first_photo(self):
+        if self.photos.count() > 0:
+            return self.photos.all()[0]
+        else:
+            return None
+
+
 class MusicianGearAdmin(admin.ModelAdmin):
     inlines = [LinkInline,PhotoInline]
 admin.site.register(MusicianGear, MusicianGearAdmin)
