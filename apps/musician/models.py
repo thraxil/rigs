@@ -7,6 +7,7 @@ from django.contrib.contenttypes import generic
 from django.template.defaultfilters import slugify
 import tagging
 from tagging import fields
+from django.forms.models import inlineformset_factory
 
 class Musician(models.Model):
     name = models.CharField(default="",unique=True, max_length=256)
@@ -40,6 +41,10 @@ class Musician(models.Model):
         PhotoFormset = generic.generic_inlineformset_factory(Photo, extra=1)
         return PhotoFormset(instance=self)
 
+    def gear_formset(self):
+        from musiciangear.models import MusicianGear
+        GearFormSet = inlineformset_factory(Musician, MusicianGear,extra=1)
+        return GearFormSet(instance=self)
 
 class MusicianForm(ModelForm):
     class Meta:

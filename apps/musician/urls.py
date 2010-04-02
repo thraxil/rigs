@@ -19,5 +19,7 @@ urlpatterns = patterns('',
                                                                             template_name="musician/musician_tag_list.html"),
                            name='musician_tag_detail'),
                        (r'^(?P<slug>[^/]+)/edit_links/?$', 'musician.views.edit_links'),
+                       (r'^(?P<slug>[^/]+)/edit_photos/?$', 'musician.views.edit_photos'),
+                       (r'^(?P<slug>[^/]+)/edit_gear/?$', 'musician.views.edit_gear'),
                        (r'^(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
 )

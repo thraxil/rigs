@@ -28,9 +28,21 @@ class Photo(models.Model):
     added = models.DateTimeField(auto_now_add=True,editable=False)
     modified = models.DateTimeField(auto_now=True,editable=False)
 
+    def is_gear(self):
+        return self.content_type.model == "gear"
+
+    def is_musiciangear(self):
+        return self.content_type.model == "musiciangear"
+
+    def is_musician(self):
+        return self.content_type.model == "musician"
 
     def gear(self):
         return self.content_object
+
+    def label(self):
+        return unicode(self.content_object)
+
 
     def get_absolute_url(self):
         return "/photos/%d/" % self.id

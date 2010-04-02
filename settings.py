@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'account',
     'signup_codes',
     'about',
+    'musiciangear',
     'gear',
     'manufacturer',
     'link',

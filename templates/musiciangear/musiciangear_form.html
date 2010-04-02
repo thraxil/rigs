@@ -2,16 +2,16 @@
 
 {% load i18n %}
 
-{% block head_title %}Musicians{% endblock %}
+{% block head_title %}Musiciangear{% endblock %}
 
 {% block body %}
 
     {% if user.is_authenticated %}
 
     {% if object %}
-<h1>Update Musician:</h1>
+<h1>Update Musiciangear:</h1>
 {% else %}
-<h1>Add Musician:</h1>
+<h1>Create Musiciangear:</h1>
 {% endif %}
 
 {% if form.has_errors %}
@@ -24,9 +24,12 @@
 </table>
 <input type="submit" />
 </form>
-
+<!--
+This is a lifesaver when debugging!
+<p> {{ form.error_dict }} </p>
+-->
 {% if object %}
-<h2>Links</h2>
+<h2>links</h2>
 <form action="../edit_links/" method="post">
 <table>
 {{ object.links_formset }}
@@ -35,7 +38,7 @@
 <input type="submit" value="edit links" />
 </form>
 
-<h2>Photos</h2>
+<h2>photos</h2>
 <form action="../edit_photos/" method="post" enctype="multipart/form-data">
 <table>
 {{ object.photos_formset }}
@@ -45,30 +48,11 @@
 </form>
 
 
-<h2>Gear</h2>
-<form action="../edit_gear/" method="post">
-<table>
-{{ object.gear_formset }}
-</table>
-
-<input type="submit" value="edit gear" />
-</form>
-
-
-
-<hr />
+<h2>Delete</h2>
 <form action="../delete/" method="post">
-<input type="submit" value="delete" />
+<input type="submit" value="delete this piece of musiciangear" />
 </form>
-
-
-
 {% endif %}
-
-<!--
-This is a lifesaver when debugging!
-<p> {{ form.error_dict }} </p>
--->
 
     {% else %}
     <p>not authenticated</p>

@@ -31,6 +31,14 @@
     </ul>
     {% endif %}
 
+    {% if object.musiciangear_set.count %}
+    <h2>Musicians using this gear</h2>
+    <ul>
+      {% for musiciangear in object.musiciangear_set.all %}
+      <li><a href="{{musiciangear.get_absolute_url}}">{{musiciangear.musician.name}}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 
     {% if user.is_authenticated %}
     <a href="update/">edit</a>
