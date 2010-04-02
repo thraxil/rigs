@@ -26,6 +26,7 @@
 </form>
 
 {% if object %}
+<a name="links"></a>
 <h2>Links</h2>
 <form action="../edit_links/" method="post">
 <table>
@@ -35,7 +36,9 @@
 <input type="submit" value="edit links" />
 </form>
 
+<a name="photos"></a>
 <h2>Photos</h2>
+
 <form action="../edit_photos/" method="post" enctype="multipart/form-data">
 <table>
 {{ object.photos_formset }}
@@ -44,8 +47,9 @@
 <input type="submit" value="edit photos" />
 </form>
 
-
+<a name="gear"></a>
 <h2>Gear</h2>
+
 <form action="../edit_gear/" method="post">
 <table>
 {{ object.gear_formset }}

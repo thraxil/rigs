@@ -46,6 +46,12 @@ class Musician(models.Model):
         GearFormSet = inlineformset_factory(Musician, MusicianGear,extra=1)
         return GearFormSet(instance=self)
 
+    def first_photo(self):
+        if self.photos.count() > 0:
+            return self.photos.all()[0]
+        else:
+            return None
+
 class MusicianForm(ModelForm):
     class Meta:
         model = Musician

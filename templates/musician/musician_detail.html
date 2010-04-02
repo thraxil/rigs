@@ -7,44 +7,62 @@
 {% block body %}
 
     <h1><a href="/musician/">Musician</a>: {{object.name}}</h1>
-    <p>Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
-    <p>Tags: {% tags_for_object object as tags %}
-      {% for tag in tags %}<a href="{% url musician_tag_detail tag %}">{{tag}}</a> {% endfor %}</p>
+
+    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a></p>{% endif %}
+
+
+    {% if object.photos.count %}
+    <div id="mainimage">
+    <img src="{% thumbnail object.first_photo.image 200x200 %}" />
+    </div>
+    {% endif %}
+
+
+    <p class="timestamp">Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
     
     {{object.description|markdown}}
 
+    <p class="tags">Tags: {% tags_for_object object as tags %}
+      {% for tag in tags %}<a href="{% url musician_tag_detail tag %}">{{tag}}</a> {% endfor %}</p>
+
+    <br style="clear:both" />
+
+    <table width="100%">
     {% if object.links.count %}
-    <ul>links
+    <tr><th>Links</th>
+      <td>{% if user.is_authenticated %}<p class="editlink"><a href="update/#links">edit</a></p>{% endif %}
+
+    <ul>
       {% for link in object.links.all %}
       <li><a href="{{link.url}}">{{link.title}}</a> {{link.description}}</li>
       {% endfor %}
-    </ul>
+    </ul></td>
+      </tr>
     {% endif %}
 
     {% if object.photos.count %}
-    <ul>photos
+    <tr><th>Photos</th>
+      <td>{% if user.is_authenticated %}<p class="editlink"><a href="update/#photos">edit</a></p>{% endif %}
+
       {% for photo in object.photos.all %}
-      <li><a href="{{photo.get_absolute_url}}"><img src="{% thumbnail photo.image 100x100 %}" /></a></li>
+      <div class="thumbnail"><a href="{{photo.get_absolute_url}}" title="{{photo.caption}}"><img src="{% thumbnail photo.image 100000x100 %}" /></a></div>
       {% endfor %}
-    </ul>
+
+    </td>
+      </tr>
     {% endif %}
 
     {% if object.musiciangear_set.count %}
-    <h2>Gear</h2>
+    <tr><th>Gear</th>
+      <td>{% if user.is_authenticated %}<p class="editlink"><a href="update/#gear">edit</a></p>{% endif %}
     <ul>
       {% for musiciangear in object.musiciangear_set.all %}
-      <li><a href="{{musiciangear.get_absolute_url}}">{{musiciangear.gear.name}}</a></li>
+      <li><a href="{{musiciangear.get_absolute_url}}">{{musiciangear.gear.name}}</a> {{musiciangear.description}}</li>
       {% endfor %}
-    </ul>
+    </ul></td></tr>
     {% endif %}
+    </table>
 
-
-    {% if user.is_authenticated %}
-    <a href="update/">edit</a>
-
-    {% else %}
-
-    {% endif %}
 
 
 {% endblock %}
