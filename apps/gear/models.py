@@ -4,6 +4,7 @@ from manufacturer.models import Manufacturer
 from link.models import Link, LinkInline
 from photo.models import Photo, PhotoInline
 from django.contrib.contenttypes import generic
+from django.forms import ModelForm
 import tagging
 from tagging import fields
 from django.template.defaultfilters import slugify
@@ -46,6 +47,10 @@ class Gear(models.Model):
         else:
             return None
 
+class AddGearForm(ModelForm):
+    class Meta:
+        model = Gear
+        exclude = ('manufacturer',)
 
 class GearAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}

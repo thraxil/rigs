@@ -5,6 +5,8 @@ from django.forms import ModelForm
 from django.contrib.contenttypes import generic
 from django.template.defaultfilters import slugify
 
+
+
 class Manufacturer(models.Model):
     name = models.CharField(default="",unique=True, max_length=256)
     slug = models.SlugField(max_length=256,editable=False)
@@ -30,6 +32,10 @@ class Manufacturer(models.Model):
     def save(self):
         self.slug = slugify(self.name)[:256]
         super(Manufacturer, self).save()
+
+    def add_gear_form(self):
+        from gear.models import AddGearForm
+        return AddGearForm()
 
 class ManufacturerForm(ModelForm):
     class Meta:

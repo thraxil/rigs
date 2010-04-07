@@ -37,4 +37,16 @@
     </tr>
     {% endif %}
 </table>
+
+{% if user.is_authenticated %}
+<form action="add_gear/" method="post">
+<fieldset><legend>add {{object.name}} gear</legend>
+<table width="100%">
+{{object.add_gear_form.as_table}}
+</table>
+<input type="submit" value="add gear" />
+</fieldset>
+</form>
+{% endif %}
+
 {% endblock %}

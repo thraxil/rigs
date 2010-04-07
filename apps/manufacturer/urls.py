@@ -15,5 +15,6 @@ urlpatterns = patterns('',
                        (r'^(?P<slug>[^/]+)/delete/?$', 'django.views.generic.create_update.delete_object',
                         dict(model=Manufacturer, post_delete_redirect="/manufacturer/") ),
                        (r'^(?P<slug>[^/]+)/edit_links/?$', 'manufacturer.views.edit_links'),
+                       (r'^(?P<slug>[^/]+)/add_gear/$', 'manufacturer.views.add_gear'),
                        (r'^(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
 )
