@@ -6,34 +6,35 @@
 {% block body %}
 
     <h1><a href="/manufacturer/">Manufacturer</a>: {{object.name}}</h1>
-    <p>Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
+    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a></p>{% endif %}
+    <p class="timestamp">Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
     
     {{object.description|markdown}}
 
+
+    <table width="100%">
     {% if object.links.count %}
-    <ul>links
+    <tr><th>Links</th>
+      <td>{% if user.is_authenticated %}<p class="editlink"><a href="update/#links">edit</a></p>{% endif %}
+    <ul>
       {% for link in object.links.all %}
       <li><a href="{{link.url}}">{{link.title}}</a> {{link.description}}</li>
       {% endfor %}
     </ul>
+    </td>
+      </tr>
     {% endif %}
 
     {% if object.gear_set.count %}
-    <h2>Gear</h2>
+    <tr><th>Gear</th>
+      <td>
     <ul>
       {% for gear in object.gear_set.all %}
       <li><a href="{{gear.get_absolute_url}}">{{gear.name}}</a></li>
       {% endfor %}
     </ul>
+    </td>
+    </tr>
     {% endif %}
-
-
-    {% if user.is_authenticated %}
-    <a href="update/">edit</a>
-
-    {% else %}
-
-    {% endif %}
-
-
+</table>
 {% endblock %}

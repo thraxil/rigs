@@ -57,7 +57,8 @@
       <td>{% if user.is_authenticated %}<p class="editlink"><a href="update/#gear">edit</a></p>{% endif %}
     <ul>
       {% for musiciangear in object.musiciangear_set.all %}
-      <li><a href="{{musiciangear.get_absolute_url}}">{{musiciangear.gear.name}}</a> {{musiciangear.description}}</li>
+      <li><a href="{{musiciangear.get_absolute_url}}">{{musiciangear.gear.manufacturer.name}}
+      {{musiciangear.gear.name}}</a> {{musiciangear.description}}</li>
       {% endfor %}
     </ul></td></tr>
     {% endif %}
