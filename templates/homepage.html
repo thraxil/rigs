@@ -16,7 +16,23 @@
 <ul>
   <li><a href="/manufacturer/">browse gear by manufacturer</a></li>
   <li><a href="/musician/">browse musicians</a></li>
-  <li>... more coming ...</li>
 </ul>
+
+<h2>Newest Gear</h2>
+<ul>
+  {% for gear in newest_gear %}
+        <li><a href="{{gear.manufacturer.get_absolute_url}}">{{gear.manufacturer.name}}</a> <a href="{{ gear.get_absolute_url }}">{{ gear.name }}</a></li>
+  {% endfor %}
+</ul>
+
+{% if newest_musicians %}
+<h2>Newest Musicians</h2>
+    <ul>
+    {% for musician in newest_musicians %}
+        <li><a href="{{ musician.get_absolute_url }}">{{ musician.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
     
 {% endblock %}

@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'tagging',
     'sorl.thumbnail',
+    'main',
 )
 
 ABSOLUTE_URL_OVERRIDES = {
