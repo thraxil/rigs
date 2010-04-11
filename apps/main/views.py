@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, get_object_or_404
+from threadedcomments.models import ThreadedComment
 
 class rendered_with(object):
     def __init__(self, template_name):
@@ -22,5 +23,6 @@ class rendered_with(object):
 @rendered_with("homepage.html")
 def index(request):
     return dict(newest_gear=Gear.objects.all().order_by("-added")[:10],
-                newest_musicians=Musician.objects.all().order_by("-added")[:10])
+                newest_musicians=Musician.objects.all().order_by("-added")[:10],
+                newest_comments=ThreadedComment.objects.all().order_by("-date_submitted")[:10])
 

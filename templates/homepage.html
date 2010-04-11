@@ -1,5 +1,9 @@
 {% extends "site_base.html" %}
-
+{% load uni_form %}
+{% load avatar_tags %}
+{% load gravatar %}
+{% load comments_tag %}
+{% load threadedcommentstags %}
 {% load i18n %}
 {% load ifsetting_tag %}
 
@@ -32,6 +36,23 @@
         <li><a href="{{ musician.get_absolute_url }}">{{ musician.name }}</a></li>
     {% endfor %}
     </ul>
+{% endif %}
+
+{% if newest_comments %}
+<h2>Newest Comments</h2>
+<table width="100%">
+    {% for comment in newest_comments %}
+<tr class="{% cycle 'even' 'odd' %}">
+<td><a href="{{comment.content_object.get_absolute_url}}">{{comment.content_object.type_display}}:
+    {{comment.content_object.name|default:comment.content_object.pk}}</a></td>
+<td>
+<td><div class="avatar">{% avatar comment.user 40 %}</div></td>
+<td>by {{comment.user.username}}</td>
+<td>on {{comment.date_submitted|date}}</td>
+<td>{{comment.comment|truncatewords:15}}
+</tr>
+    {% endfor %}
+</table>
 {% endif %}
 
     

@@ -47,6 +47,9 @@ class Gear(models.Model):
         else:
             return None
 
+    def type_display(self):
+        return "Gear"
+
 class AddGearForm(ModelForm):
     class Meta:
         model = Gear

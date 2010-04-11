@@ -34,6 +34,8 @@ class MusicianGear(models.Model):
             return self.photos.all()[0]
         else:
             return None
+    def type_display(self):
+        return "Musician Gear"
 
 
 class MusicianGearAdmin(admin.ModelAdmin):

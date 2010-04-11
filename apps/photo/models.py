@@ -47,6 +47,10 @@ class Photo(models.Model):
     def get_absolute_url(self):
         return "/photos/%d/" % self.id
 
+    def type_display(self):
+        return "Photo"
+
+
 class PhotoInline(generic.GenericTabularInline):
     model = Photo
 

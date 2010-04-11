@@ -37,6 +37,9 @@ class Manufacturer(models.Model):
         from gear.models import AddGearForm
         return AddGearForm()
 
+    def type_display(self):
+        return "Manufacturer"
+
 class ManufacturerForm(ModelForm):
     class Meta:
         model = Manufacturer

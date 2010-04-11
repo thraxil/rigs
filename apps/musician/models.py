@@ -52,6 +52,9 @@ class Musician(models.Model):
         else:
             return None
 
+    def type_display(self):
+        return "Musician"
+
 class MusicianForm(ModelForm):
     class Meta:
         model = Musician
