@@ -38,7 +38,7 @@ class Gear(models.Model):
         return PhotoFormset(instance=self)
 
     def save(self):
-        self.slug = slugify(self.name)[:256]
+        self.slug = slugify(self.manufacturer.name + "-" + self.name)[:256]
         super(Gear, self).save()
 
     def first_photo(self):
