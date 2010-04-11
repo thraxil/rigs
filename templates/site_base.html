@@ -34,3 +34,8 @@
     - <a href="{% url about %}">{% trans "About" %}</a>
 </div>
 {% endblock %}
+
+{% block extra_body_base %}
+<script src="{{ STATIC_URL }}pinax/js/comments.js" type="text/javascript"></script>
+{% block extra_body %}{% endblock %}
+{% endblock %}
