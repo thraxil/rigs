@@ -50,6 +50,9 @@ class Photo(models.Model):
     def type_display(self):
         return "Photo"
 
+    def name(self):
+        return "Photo of " + self.content_object.name
+
 
 class PhotoInline(generic.GenericTabularInline):
     model = Photo
