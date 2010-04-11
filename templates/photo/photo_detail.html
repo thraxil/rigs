@@ -1,6 +1,9 @@
 {% extends "profiles/base.html" %}
 {% load thumbnail %}
 {% load markup %}
+{% load uni_form %}
+{% load avatar_tags %}
+{% load comments_tag %}
 
 {% block head_title %}Photo{% endblock %}
 
@@ -21,12 +24,7 @@
 {% endif %}
 {% endif %}
 
-    {% if user.is_authenticated %}
-
-
-    {% else %}
-
-    {% endif %}
-
+<h3 id="comments">Comments:</h3>
+{% comments object %}
 
 {% endblock %}

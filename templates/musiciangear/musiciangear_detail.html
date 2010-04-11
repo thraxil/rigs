@@ -2,6 +2,9 @@
 {% load thumbnail %}
 {% load markup %}
 {% load tagging_tags %}
+{% load uni_form %}
+{% load avatar_tags %}
+{% load comments_tag %}
 {% block head_title %}Musiciangear{% endblock %}
 
 {% block body %}
@@ -46,5 +49,7 @@
     {% endif %}
     </table>
 
+<h3 id="comments">Comments:</h3>
+{% comments object %}
 
 {% endblock %}

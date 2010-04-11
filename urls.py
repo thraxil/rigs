@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 
 from django.views.generic.simple import direct_to_template
+from django.contrib.comments.feeds import LatestCommentFeed
 
 from django.contrib import admin
 admin.autodiscover()
@@ -13,6 +14,10 @@ if settings.ACCOUNT_OPEN_SIGNUP:
     signup_view = "account.views.signup"
 else:
     signup_view = "signup_codes.views.signup"
+
+feeds = {
+    'latest': LatestCommentFeed,
+}
 
 
 urlpatterns = patterns('',
@@ -35,7 +40,10 @@ urlpatterns = patterns('',
     (r'^profiles/', include('basic_profiles.urls')),
     (r'^notices/', include('notification.urls')),
     (r'^announcements/', include('announcements.urls')),
-    
+    (r'^comments/', include('django.contrib.comments.urls')),              
+    (r'^threadedcomments/', include('threadedcomments.urls')),
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
+     {'feed_dict': feeds}),
     (r'^admin/(.*)', admin.site.root),
 )
 

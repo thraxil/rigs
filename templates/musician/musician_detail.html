@@ -2,6 +2,11 @@
 {% load markup %}
 {% load thumbnail %}
 {% load tagging_tags %}
+{% load uni_form %}
+{% load avatar_tags %}
+{% load comments_tag %}
+
+
 {% block head_title %}Musicians{% endblock %}
 
 {% block body %}
@@ -64,6 +69,7 @@
     {% endif %}
     </table>
 
-
+<h3 id="comments">Comments on this Musician:</h3>
+{% comments object %}
 
 {% endblock %}

@@ -1,5 +1,8 @@
 {% extends "profiles/base.html" %}
 {% load markup %}
+{% load uni_form %}
+{% load avatar_tags %}
+{% load comments_tag %}
 
 {% block head_title %}Manufacturers{% endblock %}
 
@@ -48,5 +51,8 @@
 </fieldset>
 </form>
 {% endif %}
+
+<h3 id="comments">Comments on this Manufacturer:</h3>
+{% comments object %}
 
 {% endblock %}

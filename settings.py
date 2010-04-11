@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.humanize',
+    'django.contrib.comments',
     'pinax.templatetags',
     'django.contrib.markup',
     # external
@@ -137,7 +138,9 @@ INSTALLED_APPS = (
     'ajax_validation',
     'uni_form',
     'staticfiles',
-    
+    'threadedcomments',
+    'threadedcomments_extras',
+    'avatar',
     # internal (for now)
     'basic_profiles',
     'account',
@@ -181,6 +184,8 @@ CONTACT_EMAIL = "feedback@example.com"
 SITE_NAME = "Gearspotting.com"
 LOGIN_URL = "/account/login/"
 LOGIN_REDIRECT_URLNAME = "what_next"
+
+COMMENTS_ALLOW_PROFANITIES = True
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
