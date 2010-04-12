@@ -6,6 +6,8 @@
 
 {% block extra_head_base %}
     <link rel="stylesheet" href="{{STATIC_URL}}rigs/css/site_tabs.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}pinax/css/comments.css" />
+
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
@@ -37,5 +39,6 @@
 
 {% block extra_body_base %}
 <script src="{{ STATIC_URL }}pinax/js/comments.js" type="text/javascript"></script>
+
 {% block extra_body %}{% endblock %}
 {% endblock %}
