@@ -40,6 +40,21 @@ class Musician(models.Model):
                 exclude = ('content_object','content_type','object_id')
         return LinkForm
 
+    def add_photo_form(self):
+        class PhotoForm(ModelForm):
+            class Meta:
+                model = Photo
+                exclude = ('content_object','content_type','object_id')
+        return PhotoForm
+
+    def add_gear_form(self):
+        from musiciangear.models import MusicianGear
+        class GearForm(ModelForm):
+            class Meta:
+                model = MusicianGear
+                exclude = ('musician')
+        return GearForm
+
     def save(self):
         self.slug = slugify(self.name)[:256]
         super(Musician, self).save()

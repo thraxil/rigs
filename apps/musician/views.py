@@ -4,7 +4,6 @@ from django.http import HttpResponseRedirect
 from django.contrib.contenttypes import generic
 from django.forms.models import inlineformset_factory
 from django.template import RequestContext
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 
 class rendered_with(object):
@@ -30,10 +29,41 @@ def add_link(request,slug):
             l = f.save(commit=False)
             l.content_object = musician
             l.save()
-        return HttpResponseRedirect(musician.get_absolute_url())
+            return HttpResponseRedirect(musician.get_absolute_url())
     else:
         f = form()
     return dict(musician=musician,form=f)
+
+@rendered_with('musician/add_photo.html')
+def add_photo(request,slug):
+    musician = get_object_or_404(Musician,slug=slug)
+    form = musician.add_photo_form()
+    if request.method == "POST":
+        f = form(request.POST,request.FILES)
+        if f.is_valid():
+            p = f.save(commit=False)
+            p.content_object = musician
+            p.save()
+            return HttpResponseRedirect(musician.get_absolute_url())
+    else:
+        f = form()
+    return dict(musician=musician,form=f)
+
+@rendered_with('musician/add_gear.html')
+def add_gear(request,slug):
+    musician = get_object_or_404(Musician,slug=slug)
+    form = musician.add_gear_form()
+    if request.method == "POST":
+        f = form(request.POST,request.FILES)
+        if f.is_valid():
+            g = f.save(commit=False)
+            g.musician = musician
+            g.save()
+            return HttpResponseRedirect(musician.get_absolute_url())
+    else:
+        f = form()
+    return dict(musician=musician,form=f)
+
 
 def edit_links(request,slug):
     musician = get_object_or_404(Musician,slug=slug)
