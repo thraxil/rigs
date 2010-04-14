@@ -21,13 +21,13 @@ class Gear(models.Model):
     modified = models.DateTimeField(auto_now=True,editable=False)
 
     class Meta:
-        ordering = ["name",]
+        ordering = ["manufacturer__name","name",]
 
     def get_absolute_url(self):
         return "/gear/%s/" % self.slug
 
     def __unicode__(self):
-        return self.name
+        return self.manufacturer.name + ": " + self.name
 
     def links_formset(self):
         LinkFormset = generic.generic_inlineformset_factory(Link, extra=1)
