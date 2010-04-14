@@ -13,8 +13,10 @@
 
     <h1><a href="/musician/">Musician</a>: {{object.name}}</h1>
     
-    {% if user.is_authenticated %}<p class="editlink"><a href="update/" rel="facebox">edit</a></p>{% endif %}
-
+    {% if user.is_authenticated %}<p class="editlink"><a href="update/" rel="facebox">edit</a><br />
+  <a href="add_link/" rel="facebox">add link</a>
+    </p>{% endif %}
+    
 
     {% if object.photos.count %}
     <div id="mainimage">

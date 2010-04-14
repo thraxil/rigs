@@ -28,7 +28,7 @@
 {% if object %}
 <a name="links"></a>
 <h2>Links</h2>
-<form action="{{object.get_absolute_url}}/edit_links/" method="post">
+<form action="{{object.get_absolute_url}}edit_links/" method="post">
 <table>
 {{ object.links_formset }}
 </table>
@@ -39,7 +39,7 @@
 <a name="photos"></a>
 <h2>Photos</h2>
 
-<form action="{{object.get_absolute_url}}/edit_photos/" method="post" enctype="multipart/form-data">
+<form action="{{object.get_absolute_url}}edit_photos/" method="post" enctype="multipart/form-data">
 <table>
 {{ object.photos_formset }}
 </table>
@@ -50,7 +50,7 @@
 <a name="gear"></a>
 <h2>Gear</h2>
 
-<form action="{{object.get_absolute_url}}/edit_gear/" method="post">
+<form action="{{object.get_absolute_url}}edit_gear/" method="post">
 <table>
 {{ object.gear_formset }}
 </table>
@@ -61,7 +61,7 @@
 
 
 <hr />
-<form action="{{object.get_absolute_url}}/delete/" method="post">
+<form action="{{object.get_absolute_url}}delete/" method="post">
 <input type="submit" value="delete" />
 </form>
 

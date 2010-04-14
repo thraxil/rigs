@@ -33,6 +33,13 @@ class Musician(models.Model):
         LinkFormset = generic.generic_inlineformset_factory(Link, extra=1)
         return LinkFormset(instance=self)
 
+    def add_link_form(self):
+        class LinkForm(ModelForm):
+            class Meta:
+                model = Link
+                exclude = ('content_object','content_type','object_id')
+        return LinkForm
+
     def save(self):
         self.slug = slugify(self.name)[:256]
         super(Musician, self).save()
