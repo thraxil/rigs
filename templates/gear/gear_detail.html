@@ -12,7 +12,11 @@
 {% block body %}
 
     <h1><a href="/gear/">Gear</a>: {{object.name}}</h1>
-    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a></p>{% endif %}
+    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a><br />
+  <a href="add_link/" rel="facebox">add link</a><br />
+  <a href="add_photo/" rel="facebox">add photo</a><br />
+
+</p>{% endif %}
     <p>Manufacturer: <a href="{{object.manufacturer.get_absolute_url}}">{{object.manufacturer.name}}</a></p>
     <p class="timestamp">Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
 

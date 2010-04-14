@@ -50,6 +50,20 @@ class Gear(models.Model):
     def type_display(self):
         return "Gear"
 
+    def add_link_form(self):
+        class LinkForm(ModelForm):
+            class Meta:
+                model = Link
+                exclude = ('content_object','content_type','object_id')
+        return LinkForm
+
+    def add_photo_form(self):
+        class PhotoForm(ModelForm):
+            class Meta:
+                model = Photo
+                exclude = ('content_object','content_type','object_id')
+        return PhotoForm
+
 class AddGearForm(ModelForm):
     class Meta:
         model = Gear

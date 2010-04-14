@@ -24,6 +24,8 @@ urlpatterns = patterns('',
                         dict(slug_field='slug',queryset=Gear.objects.all())),
                        (r'^(?P<slug>[^/]+)/edit_links/?$', 'gear.views.edit_links'),
                        (r'^(?P<slug>[^/]+)/edit_photos/?$', 'gear.views.edit_photos'),
+                       (r'^(?P<slug>[^/]+)/add_link/$', 'gear.views.add_link'),
+                       (r'^(?P<slug>[^/]+)/add_photo/$', 'gear.views.add_photo'),
 
 )
 
