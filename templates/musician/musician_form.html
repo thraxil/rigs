@@ -18,7 +18,11 @@
 <h2>Please correct the following error{{ form.errors|pluralize }}:</h2>
 {% endif %}
 
+{% if object %}
 <form method="post" action="{{object.get_absolute_url}}update/">
+{% else %}
+<form method="post" action=".">
+{% endif %}
 <table>
 {{form.as_table}}
 </table>
