@@ -17,4 +17,5 @@ urlpatterns = patterns('',
                        (r'^(?P<slug>[^/]+)/edit_links/?$', 'manufacturer.views.edit_links'),
                        (r'^(?P<slug>[^/]+)/add_gear/$', 'manufacturer.views.add_gear'),
                        (r'^(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
+                       (r'^(?P<slug>[^/]+)/add_link/$', 'manufacturer.views.add_link'),
 )

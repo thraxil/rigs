@@ -35,7 +35,14 @@ class Manufacturer(models.Model):
 
     def add_gear_form(self):
         from gear.models import AddGearForm
-        return AddGearForm()
+        return AddGearForm
+
+    def add_link_form(self):
+        class LinkForm(ModelForm):
+            class Meta:
+                model = Link
+                exclude = ('content_object','content_type','object_id')
+        return LinkForm
 
     def type_display(self):
         return "Manufacturer"

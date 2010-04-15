@@ -9,7 +9,10 @@
 {% block body %}
 
     <h1><a href="/manufacturer/">Manufacturer</a>: {{object.name}}</h1>
-    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a></p>{% endif %}
+    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a><br />
+  <a href="add_link/" rel="facebox">add link</a><br />
+  <a href="add_gear/" rel="facebox">add gear</a><br />
+    </p>{% endif %}
     <p class="timestamp">Added: {{object.added|date}}, Modified: {{object.modified|date}}</p>
     
     {{object.description|markdown}}
@@ -41,16 +44,6 @@
     {% endif %}
 </table>
 
-{% if user.is_authenticated %}
-<form action="add_gear/" method="post">
-<fieldset><legend>add {{object.name}} gear</legend>
-<table width="100%">
-{{object.add_gear_form.as_table}}
-</table>
-<input type="submit" value="add gear" />
-</fieldset>
-</form>
-{% endif %}
 
 <h3 id="comments">Comments on this Manufacturer:</h3>
 {% comments object %}
