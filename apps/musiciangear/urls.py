@@ -19,6 +19,8 @@ urlpatterns = patterns('',
                         info_dict),
                        (r'^(?P<id>\d+)/edit_links/?$', 'musiciangear.views.edit_links'),
                        (r'^(?P<id>\d+)/edit_photos/?$', 'musiciangear.views.edit_photos'),
+                       (r'^(?P<id>\d+)/add_link/$', 'musiciangear.views.add_link'),
+                       (r'^(?P<id>\d+)/add_photo/$', 'musiciangear.views.add_photo'),
 
 )
 

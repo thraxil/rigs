@@ -11,7 +11,11 @@
 
     <h1><a href="{{object.musician.get_absolute_url}}">{{object.musician.name}}</a>
     : <a href="{{object.gear.get_absolute_url}}">{{object.gear.name}}</a></h1>
-    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a></p>{% endif %}
+    {% if user.is_authenticated %}<p class="editlink"><a href="update/">edit</a>
+<br />
+  <a href="add_link/" rel="facebox">add link</a><br />
+  <a href="add_photo/" rel="facebox">add photo</a><br />
+</p>{% endif %}
     <p>Manufacturer: <a href="{{object.gear.manufacturer.get_absolute_url}}">{{object.gear.manufacturer.name}}</a></p>
 
 

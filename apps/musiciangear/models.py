@@ -5,6 +5,7 @@ from gear.models import Gear
 from musician.models import Musician
 from photo.models import Photo, PhotoInline
 from django.contrib.contenttypes import generic
+from django.forms import ModelForm
 
 class MusicianGear(models.Model):
     musician = models.ForeignKey(Musician)
@@ -37,6 +38,19 @@ class MusicianGear(models.Model):
     def type_display(self):
         return "Musician Gear"
 
+    def add_link_form(self):
+        class LinkForm(ModelForm):
+            class Meta:
+                model = Link
+                exclude = ('content_object','content_type','object_id')
+        return LinkForm
+
+    def add_photo_form(self):
+        class PhotoForm(ModelForm):
+            class Meta:
+                model = Photo
+                exclude = ('content_object','content_type','object_id')
+        return PhotoForm
 
 class MusicianGearAdmin(admin.ModelAdmin):
     inlines = [LinkInline,PhotoInline]
