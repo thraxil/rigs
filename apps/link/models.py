@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.forms import ModelForm
 
 class Link(models.Model):
     title = models.CharField(max_length=256)
@@ -17,6 +18,10 @@ class Link(models.Model):
 
 class LinkInline(generic.GenericTabularInline):
     model = Link
+
+class LinkForm(ModelForm):
+    class Meta:
+        model = Link
 
 LinkFormset = generic.generic_inlineformset_factory(Link, extra=1)
 

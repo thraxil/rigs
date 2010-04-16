@@ -6,13 +6,14 @@
 
 {% block body %}
 
-    <h1>{{tag}} {% if user.is_authenticated %}{% endif %}</h1>
+    <h1>Tag: {{tag}} {% if user.is_authenticated %}{% endif %}</h1>
     
 
 {% if object_list %}
     <ul>Gear:
     {% for gear in object_list %}
-        <li><a href="{{ gear.get_absolute_url }}">{{ gear.name }}</a></li>
+        <li><a href="{{gear.manufacturer.get_absolute_url}}">{{gear.manufacturer.name}}</a> 
+	  <a href="{{ gear.get_absolute_url }}">{{ gear.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
