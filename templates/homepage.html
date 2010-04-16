@@ -24,7 +24,9 @@
   <li><a href="/musician/tag/">musician tag cloud</a></li>
 </ul>
 
-<h2>Newest Gear</h2>
+<h2>Newest Gear {% if user.is_authenticated %}
+    (<a href="/gear/create/">+</a>)
+    {% endif %}</h2>
 <ul>
   {% for gear in newest_gear %}
         <li><a href="{{gear.manufacturer.get_absolute_url}}">{{gear.manufacturer.name}}</a> <a href="{{ gear.get_absolute_url }}">{{ gear.name }}</a></li>
@@ -32,7 +34,9 @@
 </ul>
 
 {% if newest_musicians %}
-<h2>Newest Musicians</h2>
+<h2>Newest Musicians {% if user.is_authenticated %}
+    (<a href="/musician/create/">+</a>)
+    {% endif %}</h2>
     <ul>
     {% for musician in newest_musicians %}
         <li><a href="{{ musician.get_absolute_url }}">{{ musician.name }}</a></li>
