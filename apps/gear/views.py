@@ -18,6 +18,10 @@ class rendered_with(object):
                 return items
         return rendered_func
 
+@rendered_with('gear/tags.html')
+def tags(request):
+    return dict()
+
 @rendered_with('gear/add_link.html')
 def add_link(request,slug):
     gear = get_object_or_404(Gear,slug=slug)

@@ -19,6 +19,10 @@ class rendered_with(object):
                 return items
         return rendered_func
 
+@rendered_with('musician/tags.html')
+def tags(request):
+    return dict()
+
 @rendered_with('musician/add_link.html')
 def add_link(request,slug):
     musician = get_object_or_404(Musician,slug=slug)
