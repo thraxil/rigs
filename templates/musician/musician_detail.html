@@ -75,12 +75,11 @@
 	{% for photo in musiciangear.photos.all %}
 	<div class="thumbnail"><a href="{{photo.get_absolute_url}}" title="{{photo.caption}}"><img src="{% thumbnail photo.image 100000x100 %}" /></a></div>
 	{% endfor %}
-
 	{% endif %}
 
 	{% tags_for_object musiciangear.gear as geartags %}
 	{% if geartags %}
-	<p class="tags">Tags:
+	<p class="geartags">Tags:
       {% for tag in geartags %}<a href="{% url gear_tag_detail tag %}">{{tag}}</a> {% endfor %}</p>
 	{% endif %}
       </td>
