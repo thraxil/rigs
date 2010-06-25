@@ -81,7 +81,7 @@
 
 	{% tags_for_object musiciangear.gear as geartags %}
 	{% if geartags %}
-	<p class="geartags" style="text-align: right">Tags:
+	<p class="geartags" style="text-align: right">
       {% for tag in geartags %}<a href="{% url gear_tag_detail tag %}">{{tag}}</a> {% endfor %}</p>
 	{% endif %}
       </td>
