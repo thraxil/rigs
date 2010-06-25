@@ -79,6 +79,15 @@
 	<br style="clear:both"/>
 	{% endif %}
 
+	{% if musiciangear.gear.photos.count %}
+	<br style="clear:both"/>
+	{% for photo in musiciangear.gear.photos.all %}
+	<div class="thumbnail"><a href="{{photo.get_absolute_url}}" title="{{photo.caption}}"><img src="{% thumbnail photo.image 100000x100 %}" /></a></div>
+	{% endfor %}
+	<br style="clear:both"/>
+	{% endif %}
+
+
 	{% tags_for_object musiciangear.gear as geartags %}
 	{% if geartags %}
 	<p class="geartags" style="text-align: right">
