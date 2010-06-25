@@ -68,18 +68,20 @@
 	<table width="100%">
       {% for musiciangear in object.musiciangear_set.all %}
       <tr class="{% cycle 'even' 'odd' %}">
-      <td><a href="{{musiciangear.get_absolute_url}}">{{musiciangear.gear.manufacturer.name}}
-      {{musiciangear.gear.name}}</a> {{musiciangear.description}}
+      <td><a href="{{musiciangear.get_absolute_url}}"><b>{{musiciangear.gear.manufacturer.name}}
+      {{musiciangear.gear.name}}</b></a> {{musiciangear.description}}
 
 	{% if musiciangear.photos.count %}
+	<br style="clear:both"/>
 	{% for photo in musiciangear.photos.all %}
 	<div class="thumbnail"><a href="{{photo.get_absolute_url}}" title="{{photo.caption}}"><img src="{% thumbnail photo.image 100000x100 %}" /></a></div>
 	{% endfor %}
+	<br style="clear:both"/>
 	{% endif %}
 
 	{% tags_for_object musiciangear.gear as geartags %}
 	{% if geartags %}
-	<p class="geartags">Tags:
+	<p class="geartags" style="text-align: right">Tags:
       {% for tag in geartags %}<a href="{% url gear_tag_detail tag %}">{{tag}}</a> {% endfor %}</p>
 	{% endif %}
       </td>
