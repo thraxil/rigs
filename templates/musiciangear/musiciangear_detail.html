@@ -5,7 +5,7 @@
 {% load uni_form %}
 {% load avatar_tags %}
 {% load comments_tag %}
-{% block head_title %}Musiciangear{% endblock %}
+{% block head_title %}{{object.gear.name}} used by {{object.musician.name}}{% endblock %}
 
 {% block body %}
 
